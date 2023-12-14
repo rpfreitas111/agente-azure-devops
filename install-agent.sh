@@ -75,6 +75,10 @@ if [ $idUser -ne 0 ]
   read -p "Presione enter para continuar"
   ./config.sh --unattended  --url $urlOrganization --auth pat --token $myToken --pool $dfPool --agent $agentName --work $directoryWork
   export findSvc=`find $HOME/az-agent-$countAgent -maxdepth 2 -iname svc.sh |wc -l`
+  echo "--------------------------------------------------------------------------"
+  echo "Incluir permissões de acesso ao usuário $HOME"
+  sudo chown -R $USER. az-agent-$countAgent
+  echo "--------------------------------------------------------------------------"
   if [ $findSvc -ne 0 ]
     then
       echo ""
